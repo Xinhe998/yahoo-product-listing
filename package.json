@@ -21,6 +21,7 @@
     "js-beautify": "^1.10.0",
     "lodash": "^4.17.11",
     "node-fetch": "^2.6.0",
+    "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.11.0",
     "react-icons": "^3.7.0",
