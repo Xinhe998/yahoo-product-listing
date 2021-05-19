@@ -16,6 +16,7 @@ const PRODUCTS = [
     rating: 4.5,
     price: 790,
     imgSrc: kitchen,
+    discountedPrice: 10,
   },
   {
     id: 2,
@@ -48,7 +49,7 @@ const PRODUCTS = [
 ];
 
 const AppContent = styled.div`
-  max-width: 1280px;
+  max-width: 1024px;
   margin-left: auto;
   margin-right: auto;
 `;
@@ -64,17 +65,19 @@ const App = () => {
   };
 
   const [isWishListModalOpened, setIsWishListModalOpened] = useState(false);
+  const wishListWithProductDetail = PRODUCTS.filter(item => wishList.includes(item.id));
 
   return (
     <AppContent>
       <ProductsContainer>
         {PRODUCTS.map(({
-          id, name, rating, price, imgSrc,
+          id, name, rating, price, discountedPrice, imgSrc,
         }) => (
           <ProductItem
             name={name}
             rating={rating}
             price={price}
+            discountedPrice={discountedPrice}
             onLikeButtonClicked={() => handleLikeButtonClicked(id)}
             isLiked={wishList.includes(id)}
             imgSrc={imgSrc}
@@ -89,7 +92,7 @@ const App = () => {
 
       {isWishListModalOpened && (
         <WishListModal
-          wishList={wishList} // TODO: Get mapping product data by id.
+          wishList={wishListWithProductDetail}
           onClose={() => setIsWishListModalOpened(false)}
         />
       )}

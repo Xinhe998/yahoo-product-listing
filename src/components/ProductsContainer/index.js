@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: auto auto auto auto; 
   -webkit-box-align: start;
   -webkit-align-items: start;
   -ms-flex-align: start;
@@ -12,6 +12,14 @@ const Grid = styled.div`
   justify-items: center;
   grid-gap: 20px 30px;
   margin-bottom: 80px;
+
+  @media only screen and (max-width: 768px) {
+    grid-template-columns: auto auto;
+  }
+
+  @media only screen and (min-width: 769px) and (max-width: 1024px) {
+    grid-template-columns: auto auto auto;
+  }
 `;
 
 const TemplateGrid = ({ children }) => <Grid>{children}</Grid>;
