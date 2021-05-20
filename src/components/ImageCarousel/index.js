@@ -45,6 +45,10 @@ const PrevButton = styled.button`
   width: 30px;
   cursor: pointer;
   z-index: 100;
+
+  &:after {
+    content: "❮";
+  }
 `;
 
 const NextButton = styled.button`
@@ -56,6 +60,10 @@ const NextButton = styled.button`
   height: 40px;
   width: 30px;
   z-index: 100;
+
+  &:after {
+    content: "❯";
+  }
 `;
 
 const useCarouselWidth = (elRef) => {
@@ -102,8 +110,8 @@ const ImageCarousel = ({ imgSources }) => {
 
   return (
     <ImageCarouselContainer ref={imgWrapperRef}>
-      <PrevButton onClick={handlePrevBtnClick}>{'<'}</PrevButton>
-      <NextButton onClick={handleNextBtnClick}>{'>'}</NextButton>
+      <PrevButton onClick={handlePrevBtnClick} />
+      <NextButton onClick={handleNextBtnClick} />
       <ImagesWrapper xPosition={xPosition}>
         {imgSources.map(imgSrc => (
           <img src={imgSrc} alt="" />
