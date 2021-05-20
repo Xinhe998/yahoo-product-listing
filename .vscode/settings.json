@@ -1,5 +1,4 @@
 {
-  "cSpell.words": ["codio", "semibold"],
   "eslint.format.enable": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
