@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import CloseIcon from './CloseIcon';
+import ImageCarousel from '../ImageCarousel';
 
 const WithListModalContainer = styled.div`
   width: 500px;
@@ -46,15 +47,22 @@ const ProductItem = styled.div`
   flex-direction: row;
   align-items: center;
   margin-bottom: 10px;
+`;
+
+const ImgWrapper = styled.div`
+  width: 150px;
+  min-width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border: 1px solid #cccccc;
+  margin-right: 30px;
 
   img {
-    width: 150px;
-    min-width: 150px;
-    height: 150px;
+    width: 100%;
+    min-width: 100%;
+    height: 100%;
     object-fit: cover;
     object-position: center;
-    border: 1px solid #cccccc;
-    margin-right: 30px;
   }
 `;
 
@@ -74,7 +82,13 @@ const WithListModal = ({ wishList, onClose }) => (
     <ModalContent>
       {wishList.map(({ name, imgSrc }) => (
         <ProductItem>
-          <img src={imgSrc} alt="" />
+          <ImgWrapper>
+            {typeof imgSrc === 'object' ? (
+              <ImageCarousel imgSources={imgSrc} />
+            ) : (
+              <img src={imgSrc} alt="" />
+            )}
+          </ImgWrapper>
           {name}
         </ProductItem>
       ))}

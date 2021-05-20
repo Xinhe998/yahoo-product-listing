@@ -8,6 +8,8 @@ import WishListModal from '../../components/WishListModal';
 
 import kitchen from '../../assets/kitchen.jpeg';
 import kitchenHorizontal from '../../assets/kitchen-horizontal.jpeg';
+import kitchen2 from '../../assets/kitchen-2.jpeg';
+import kitchen3 from '../../assets/kitchen-3.jpeg';
 
 const PRODUCTS = [
   {
@@ -30,7 +32,12 @@ const PRODUCTS = [
     name: 'Orren Ellis Chana 3-Light LED Kitchen Island Dome Pendant',
     rating: 3,
     price: 450,
-    imgSrc: kitchen,
+    imgSrc: [
+      kitchen,
+      kitchen2,
+      kitchen3,
+      kitchenHorizontal,
+    ],
   },
   {
     id: 4,
@@ -44,7 +51,24 @@ const PRODUCTS = [
     name: 'Orren Ellis Chana 3-Light LED Kitchen Island Dome Pendant',
     rating: 2.5,
     price: 500,
-    imgSrc: kitchen,
+    imgSrc: [
+      kitchen,
+      kitchen2,
+      kitchen3,
+      kitchenHorizontal,
+    ],
+  },
+  {
+    id: 5,
+    name: 'Orren Ellis Chana 3-Light LED Kitchen Island Dome Pendant',
+    rating: 1.5,
+    price: 500,
+    imgSrc: [
+      kitchen,
+      kitchen2,
+      kitchen3,
+      kitchenHorizontal,
+    ],
   },
 ];
 
@@ -70,19 +94,21 @@ const App = () => {
   return (
     <AppContent>
       <ProductsContainer>
-        {PRODUCTS.map(({
-          id, name, rating, price, discountedPrice, imgSrc,
-        }) => (
-          <ProductItem
-            name={name}
-            rating={rating}
-            price={price}
-            discountedPrice={discountedPrice}
-            onLikeButtonClicked={() => handleLikeButtonClicked(id)}
-            isLiked={wishList.includes(id)}
-            imgSrc={imgSrc}
-          />
-        ))}
+        {PRODUCTS.map(
+          ({
+            id, name, rating, price, discountedPrice, imgSrc,
+          }) => (
+            <ProductItem
+              name={name}
+              rating={rating}
+              price={price}
+              discountedPrice={discountedPrice}
+              onLikeButtonClicked={() => handleLikeButtonClicked(id)}
+              isLiked={wishList.includes(id)}
+              imgSrc={imgSrc}
+            />
+          ),
+        )}
       </ProductsContainer>
 
       <WishListBar

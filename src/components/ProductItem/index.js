@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import StarRating from '../StarRating';
 import LikeButton from '../LikeButton';
+import ImageCarousel from '../ImageCarousel';
 
 const ProductItemContainer = styled.div`
   display: flex;
@@ -18,13 +19,6 @@ const ProductItemContainer = styled.div`
 `;
 
 const InnerWrapper = styled.div`
-  /* display: flex;
-  flex-direction: column;
-  position: relative;
-  height: 100%;
-  overflow: hidden;
-  margin-bottom: 8px;
-  padding-top: 100%; */
   display: flex;
   flex-direction: column;
   opacity: 0.99;
@@ -109,7 +103,11 @@ const ProductItem = ({
   <ProductItemContainer>
     <InnerWrapper>
       <ImgWrapper>
-        <img src={imgSrc} alt="" />
+        {typeof imgSrc === 'object' ? (
+          <ImageCarousel imgSources={imgSrc} />
+        ) : (
+          <img src={imgSrc} alt="" />
+        )}
       </ImgWrapper>
       {discountedPrice && (
         <DiscountedBadge>{`${discountedPrice}% Off`}</DiscountedBadge>
