@@ -62,14 +62,14 @@ const StarRating = ({ starCount, rating }) => {
 
   return (
     <RatingBox>
-      {[...Array(fullStarsCount)].map(n => (
-        <FullStar key={`fullStar-${n}`} />
+      {[...Array(fullStarsCount)].map((n, idx) => (
+        <FullStar key={`fullStar-${idx}`} />
       ))}
-      {[...Array(halfStarsCount)].map(n => (
-        <HalfStar key={`halfStar-${n}`} />
+      {[...Array(halfStarsCount)].map((n, idx) => (
+        <HalfStar key={`halfStar-${idx}`} />
       ))}
-      {[...Array(emptyStarsCount)].map(n => (
-        <EmptyStar key={`emptyStar-${n}`} />
+      {[...Array(emptyStarsCount)].map((n, idx) => (
+        <EmptyStar key={`emptyStar-${idx}`} />
       ))}
     </RatingBox>
   );
