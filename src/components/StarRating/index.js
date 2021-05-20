@@ -38,11 +38,11 @@ const HalfStar = styled(Star)`
 
   &::after {
     content: "★";
+    color: #a7a7a7;
     position: absolute;
     left: 0;
     width: 50%;
-    text-indent: 100%;
-    overflow: hidden;
+    z-index: -1;
   }
 `;
 
