@@ -77,7 +77,7 @@ const ImgWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 0 60%;
+  margin: 0 0 130px;
 
   img {
     width: 100%;
