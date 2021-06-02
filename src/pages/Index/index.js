@@ -89,7 +89,13 @@ const App = () => {
   };
 
   const [isWishListModalOpened, setIsWishListModalOpened] = useState(false);
-  const wishListWithProductDetail = PRODUCTS.filter(item => wishList.includes(item.id));
+  // const wishListWithProductDetail = PRODUCTS.filter(item => wishList.includes(item.id));
+
+  let wishListWithProductDetail = [];
+  wishList.forEach((id) => {
+    wishListWithProductDetail = [...wishListWithProductDetail,
+      ...PRODUCTS.filter(item => item.id === id)];
+  });
 
   return (
     <AppContent>
