@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import StarRating from '../StarRating';
@@ -92,6 +92,7 @@ const ImgWrapper = styled.div`
 `;
 
 const ProductItem = ({
+  id,
   name,
   price,
   rating,
@@ -117,13 +118,14 @@ const ProductItem = ({
       <StarRating starCount={5} rating={rating} />
       <StyledLikeButton
         activated={isLiked}
-        onLikeButtonClicked={onLikeButtonClicked}
+        onLikeButtonClicked={() => onLikeButtonClicked(id)}
       />
     </InnerWrapper>
   </ProductItemContainer>
 );
 
 ProductItem.propTypes = {
+  id: PropTypes.number,
   name: PropTypes.string,
   price: PropTypes.number,
   discountedPrice: PropTypes.number,
@@ -133,4 +135,4 @@ ProductItem.propTypes = {
   onLikeButtonClicked: PropTypes.func,
 };
 
-export default ProductItem;
+export default memo(ProductItem);

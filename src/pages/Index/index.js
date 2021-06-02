@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
 
 import ProductItem from '../../components/ProductItem';
@@ -14,7 +14,7 @@ import kitchen3 from '../../assets/kitchen-3.jpeg';
 const PRODUCTS = [
   {
     id: 1,
-    name: 'Orren Ellis Chana 3-Light LED Kitchen Island Dome Pendant',
+    name: '1 Orren Ellis Chana 3-Light LED Kitchen Island Dome Pendant',
     rating: 4.5,
     price: 790,
     imgSrc: kitchen,
@@ -22,14 +22,14 @@ const PRODUCTS = [
   },
   {
     id: 2,
-    name: 'Orren Ellis Chana 4-Light LED Kitchen Island Dome Pendant',
+    name: '2 Orren Ellis Chana 4-Light LED Kitchen Island Dome Pendant',
     rating: 5,
     price: 900,
     imgSrc: kitchenHorizontal,
   },
   {
     id: 3,
-    name: 'Orren Ellis Chana 3-Light LED Kitchen Island Dome Pendant',
+    name: '3 Orren Ellis Chana 3-Light LED Kitchen Island Dome Pendant',
     rating: 3,
     price: 450,
     imgSrc: [
@@ -41,14 +41,14 @@ const PRODUCTS = [
   },
   {
     id: 4,
-    name: 'Orren Ellis Chana 3-Light LED Kitchen Island Dome Pendant',
+    name: '4 Orren Ellis Chana 3-Light LED Kitchen Island Dome Pendant',
     rating: 4,
     price: 210,
     imgSrc: kitchenHorizontal,
   },
   {
     id: 5,
-    name: 'Orren Ellis Chana 3-Light LED Kitchen Island Dome Pendant',
+    name: '5 Orren Ellis Chana 3-Light LED Kitchen Island Dome Pendant',
     rating: 2.5,
     price: 500,
     imgSrc: [
@@ -59,8 +59,8 @@ const PRODUCTS = [
     ],
   },
   {
-    id: 5,
-    name: 'Orren Ellis Chana 3-Light LED Kitchen Island Dome Pendant',
+    id: 6,
+    name: '6 Orren Ellis Chana 3-Light LED Kitchen Island Dome Pendant',
     rating: 1.5,
     price: 500,
     imgSrc: [
@@ -80,13 +80,13 @@ const AppContent = styled.div`
 
 const App = () => {
   const [wishList, setWishList] = useState([]);
-  const handleLikeButtonClicked = (id) => {
+  const handleLikeButtonClicked = useCallback((id) => {
     if (!wishList.includes(id)) {
       setWishList([...wishList, id]);
     } else {
       setWishList(wishList.filter(item => item !== id));
     }
-  };
+  }, [wishList, setWishList]);
 
   const [isWishListModalOpened, setIsWishListModalOpened] = useState(false);
   // const wishListWithProductDetail = PRODUCTS.filter(item => wishList.includes(item.id));
@@ -105,11 +105,12 @@ const App = () => {
             id, name, rating, price, discountedPrice, imgSrc,
           }) => (
             <ProductItem
+              id={id}
               name={name}
               rating={rating}
               price={price}
               discountedPrice={discountedPrice}
-              onLikeButtonClicked={() => handleLikeButtonClicked(id)}
+              onLikeButtonClicked={handleLikeButtonClicked}
               isLiked={wishList.includes(id)}
               imgSrc={imgSrc}
             />
